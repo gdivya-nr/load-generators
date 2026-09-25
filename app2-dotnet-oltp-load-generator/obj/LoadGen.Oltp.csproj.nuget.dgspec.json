@@ -1,0 +1,101 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/gdivya/Downloads/app-oltp-load-generator-new/app2-dotnet-oltp-load-generator/LoadGen.Oltp.csproj": {}
+  },
+  "projects": {
+    "/Users/gdivya/Downloads/app-oltp-load-generator-new/app2-dotnet-oltp-load-generator/LoadGen.Oltp.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/gdivya/Downloads/app-oltp-load-generator-new/app2-dotnet-oltp-load-generator/LoadGen.Oltp.csproj",
+        "projectName": "app2-oltp-load-generator",
+        "projectPath": "/Users/gdivya/Downloads/app-oltp-load-generator-new/app2-dotnet-oltp-load-generator/LoadGen.Oltp.csproj",
+        "packagesPath": "/Users/gdivya/.nuget/packages/",
+        "outputPath": "/Users/gdivya/Downloads/app-oltp-load-generator-new/app2-dotnet-oltp-load-generator/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/gdivya/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "/opt/homebrew/Cellar/dotnet/10.0.301/libexec/library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "framework": "net8.0",
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "10.0.300"
+      },
+      "frameworks": {
+        "net8.0": {
+          "framework": "net8.0",
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.Data.SqlClient": {
+              "target": "Package",
+              "version": "[5.2.0, )"
+            },
+            "NewRelic.Agent": {
+              "target": "Package",
+              "version": "[10.35.0, )"
+            },
+            "NewRelic.Agent.Api": {
+              "target": "Package",
+              "version": "[10.35.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[8.0.28, 8.0.28]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.osx-arm64",
+              "version": "[8.0.28, 8.0.28]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[8.0.28, 8.0.28]"
+            }
+          ],
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/opt/homebrew/Cellar/dotnet/10.0.301/libexec/sdk/10.0.301/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
