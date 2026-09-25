@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- FILE appender removed - logs not stored to disk -->
+    <!-- Console output is redirected to /dev/null by run.sh -->
+
+    <root level="INFO">
+        <appender-ref ref="STDOUT" />
+    </root>
+
+    <logger name="com.loadgen.oltp" level="DEBUG" />
+    <logger name="com.zaxxer.hikari" level="INFO" />
+    <logger name="oracle.jdbc" level="WARN" />
+</configuration>

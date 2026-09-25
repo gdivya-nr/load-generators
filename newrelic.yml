@@ -1,0 +1,129 @@
+# New Relic Java Agent Configuration for OLTP Load Generator
+# For full configuration options, see: https://docs.newrelic.com/docs/apm/agents/java-agent/configuration/java-agent-configuration-config-file/
+
+# Common settings
+common: &default_settings
+  # License key (can be overridden by NEW_RELIC_LICENSE_KEY environment variable)
+  license_key: ''
+
+  app_name: APP1
+
+  host: staging-collector.newrelic.com
+  port: 443
+
+  audit_mode: false
+
+  log_level: info
+
+  # Log to file
+  log_file_name: newrelic_agent.log
+  log_file_path: logs
+  log_daily: true
+
+  # Enable distributed tracing
+  distributed_tracing:
+    enabled: true
+
+  # Enable span events
+  span_events:
+    enabled: true
+    max_samples_stored: 10000
+
+  # Application logging - CRITICAL for better observability
+  application_logging:
+    enabled: true
+    forwarding:
+      enabled: true
+      max_samples_stored: 10000
+    local_decorating:
+      enabled: true
+    metrics:
+      enabled: true
+
+  # Transaction tracer
+  transaction_tracer:
+    enabled: true
+    transaction_threshold: apdex_f
+    record_sql: obfuscated
+    stack_trace_threshold: 0.01
+    explain_enabled: true
+    explain_threshold: 0.01
+    sql_metadata_comments: nr_service_guid
+    top_n: 50
+
+  # Transaction events
+  transaction_events:
+    enabled: true
+    max_samples_stored: 10000
+
+  # Error collector
+  error_collector:
+    enabled: true
+    ignore_errors: ""
+    ignore_status_codes: 404
+
+  # Thread profiler
+  thread_profiler:
+    enabled: true
+
+  # Browser monitoring (not needed for backend)
+  browser_monitoring:
+    auto_instrument: false
+
+  # Cross application tracer (deprecated, use distributed tracing)
+  cross_application_tracer:
+    enabled: false
+
+  # SQL statement configuration
+  slow_sql:
+    enabled: true
+
+  # Database tracer - CRITICAL for database monitoring
+  datastore_tracer:
+    enabled: true
+    instance_reporting:
+      enabled: true
+    database_name_reporting:
+      enabled: true
+
+  # Database name reporting
+  database_name_reporting:
+    enabled: true
+
+  # JVM monitoring
+  jvm:
+    jfr:
+      enabled: false
+
+  # Custom instrumentation
+  enable_auto_app_naming: false
+  enable_auto_transaction_naming: true
+
+  # High security mode (disable for testing)
+  high_security: false
+
+  # Labels for filtering in New Relic
+  labels:
+    environment: staging
+    application: oltp-load-generator
+    team: performance-testing
+    database: sqlserver
+
+# Environment specific settings can override common settings
+development:
+  <<: *default_settings
+  app_name: APP1
+  log_level: debug
+
+test:
+  <<: *default_settings
+  app_name: APP1
+  log_level: debug
+
+production:
+  <<: *default_settings
+  app_name: APP1
+
+staging:
+  <<: *default_settings
+  app_name: APP1
