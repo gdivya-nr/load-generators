@@ -64,6 +64,7 @@ public class OltpLoadGenerator : IHostedService
         _logger.LogInformation("OltpLoadGenerator shutdown complete.");
     }
 
+    [Transaction]
     private async Task RunWorker(int threadId, CancellationToken ct)
     {
         _logger.LogInformation("Worker thread {ThreadId} started", threadId);
@@ -115,7 +116,7 @@ public class OltpLoadGenerator : IHostedService
         _logger.LogInformation("Worker {ThreadId} completed {Ops} operations", threadId, operationCount);
     }
 
-    [Transaction]
+    [Trace]
     private async Task CreateOrderWorkflow()
     {
         long customerId = _random.Next(1000) + 1;
@@ -124,7 +125,7 @@ public class OltpLoadGenerator : IHostedService
         await client.PostAsync($"{_apiBaseUrl}/api/orders/create?customerId={customerId}&numItems={numItems}", null);
     }
 
-    [Transaction]
+    [Trace]
     private async Task UpdateCustomerWorkflow()
     {
         long customerId = _random.Next(1000) + 1;
@@ -133,7 +134,7 @@ public class OltpLoadGenerator : IHostedService
         await client.PutAsync($"{_apiBaseUrl}/api/customers/{customerId}/loyalty?points={points}", null);
     }
 
-    [Transaction]
+    [Trace]
     private async Task InventoryCheckWorkflow()
     {
         long productId = _random.Next(500) + 1;
@@ -141,7 +142,7 @@ public class OltpLoadGenerator : IHostedService
         await client.GetAsync($"{_apiBaseUrl}/api/inventory/{productId}/check");
     }
 
-    [Transaction]
+    [Trace]
     private async Task ProcessTransactionWorkflow()
     {
         long orderId = _random.Next(1000) + 1;
@@ -149,7 +150,7 @@ public class OltpLoadGenerator : IHostedService
         await client.PostAsync($"{_apiBaseUrl}/api/transactions/process?orderId={orderId}", null);
     }
 
-    [Transaction]
+    [Trace]
     private async Task SessionManagementWorkflow()
     {
         long customerId = _random.Next(1000) + 1;
@@ -157,14 +158,14 @@ public class OltpLoadGenerator : IHostedService
         await client.PostAsync($"{_apiBaseUrl}/api/sessions/create?customerId={customerId}", null);
     }
 
-    [Transaction]
+    [Trace]
     private async Task DeleteOldDataWorkflow()
     {
         var client = _httpClientFactory.CreateClient();
         await client.DeleteAsync($"{_apiBaseUrl}/api/orders/old?daysToKeep=30");
     }
 
-    [Transaction]
+    [Trace]
     private async Task BulkInsertWorkflow()
     {
         int batchSize = _random.Next(2) + 2; // 2–3
@@ -172,7 +173,7 @@ public class OltpLoadGenerator : IHostedService
         await client.PostAsync($"{_apiBaseUrl}/api/orders/bulk?batchSize={batchSize}", null);
     }
 
-    [Transaction]
+    [Trace]
     private async Task ProductOperationsWorkflow()
     {
         long productId = _random.Next(500) + 1;

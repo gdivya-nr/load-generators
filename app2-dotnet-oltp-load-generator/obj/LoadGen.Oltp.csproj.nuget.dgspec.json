@@ -51,10 +51,6 @@
               "target": "Package",
               "version": "[5.2.0, )"
             },
-            "NewRelic.Agent": {
-              "target": "Package",
-              "version": "[10.35.0, )"
-            },
             "NewRelic.Agent.Api": {
               "target": "Package",
               "version": "[10.35.0, )"

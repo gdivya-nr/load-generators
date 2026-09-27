@@ -19,7 +19,6 @@ public class InventoryController : ControllerBase
     }
 
     [HttpGet("{productId}/check")]
-    [Transaction(Web = true)]
     public IActionResult CheckInventory(long productId)
     {
         try
@@ -44,7 +43,6 @@ public class InventoryController : ControllerBase
     }
 
     [HttpPut("{productId}/restock")]
-    [Transaction(Web = true)]
     public IActionResult RestockInventory(long productId, [FromQuery] int quantity)
     {
         try
@@ -64,7 +62,6 @@ public class InventoryController : ControllerBase
     }
 
     [HttpPut("bulk-update")]
-    [Transaction(Web = true)]
     public IActionResult BulkUpdateInventory()
     {
         try

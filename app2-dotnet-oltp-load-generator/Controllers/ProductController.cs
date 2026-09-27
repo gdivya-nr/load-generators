@@ -19,7 +19,6 @@ public class ProductController : ControllerBase
     }
 
     [HttpGet("{productId}")]
-    [Transaction(Web = true)]
     public IActionResult GetProductDetails(long productId)
     {
         try
@@ -37,7 +36,6 @@ public class ProductController : ControllerBase
     }
 
     [HttpPut("{productId}/price")]
-    [Transaction(Web = true)]
     public IActionResult UpdatePrice(long productId)
     {
         try
@@ -55,7 +53,6 @@ public class ProductController : ControllerBase
     }
 
     [HttpGet("search")]
-    [Transaction(Web = true)]
     public IActionResult SearchByCategory()
     {
         try

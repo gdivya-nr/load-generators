@@ -27,7 +27,6 @@ public class OrderController : ControllerBase
     }
 
     [HttpPost("create")]
-    [Transaction(Web = true)]
     public IActionResult CreateOrder([FromQuery] long customerId, [FromQuery] int numItems)
     {
         try
@@ -62,7 +61,6 @@ public class OrderController : ControllerBase
     }
 
     [HttpPut("{orderId}/status")]
-    [Transaction(Web = true)]
     public IActionResult UpdateOrderStatus(long orderId, [FromQuery] string status)
     {
         try
@@ -82,7 +80,6 @@ public class OrderController : ControllerBase
     }
 
     [HttpDelete("old")]
-    [Transaction(Web = true)]
     public IActionResult DeleteOldOrders([FromQuery] int daysToKeep = 30)
     {
         try
@@ -102,7 +99,6 @@ public class OrderController : ControllerBase
     }
 
     [HttpPost("bulk")]
-    [Transaction(Web = true)]
     public IActionResult BulkCreateOrders([FromQuery] int batchSize)
     {
         try

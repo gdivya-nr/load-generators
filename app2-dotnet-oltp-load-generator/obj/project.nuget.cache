@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "xuvUGIc5qkM=",
+  "dgSpecHash": "JmSCgV+5Krg=",
   "success": true,
   "projectFilePath": "/Users/gdivya/Downloads/app-oltp-load-generator-new/app2-dotnet-oltp-load-generator/LoadGen.Oltp.csproj",
   "expectedPackageFiles": [
@@ -18,7 +18,6 @@
     "/Users/gdivya/.nuget/packages/microsoft.identitymodel.protocols.openidconnect/6.35.0/microsoft.identitymodel.protocols.openidconnect.6.35.0.nupkg.sha512",
     "/Users/gdivya/.nuget/packages/microsoft.identitymodel.tokens/6.35.0/microsoft.identitymodel.tokens.6.35.0.nupkg.sha512",
     "/Users/gdivya/.nuget/packages/microsoft.sqlserver.server/1.0.0/microsoft.sqlserver.server.1.0.0.nupkg.sha512",
-    "/Users/gdivya/.nuget/packages/newrelic.agent/10.35.0/newrelic.agent.10.35.0.nupkg.sha512",
     "/Users/gdivya/.nuget/packages/newrelic.agent.api/10.35.0/newrelic.agent.api.10.35.0.nupkg.sha512",
     "/Users/gdivya/.nuget/packages/system.configuration.configurationmanager/8.0.0/system.configuration.configurationmanager.8.0.0.nupkg.sha512",
     "/Users/gdivya/.nuget/packages/system.identitymodel.tokens.jwt/6.35.0/system.identitymodel.tokens.jwt.6.35.0.nupkg.sha512",

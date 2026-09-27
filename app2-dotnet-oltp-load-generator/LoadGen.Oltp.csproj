@@ -9,6 +9,5 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Data.SqlClient" Version="5.2.0" />
     <PackageReference Include="NewRelic.Agent.Api" Version="10.35.0" />
-    <PackageReference Include="NewRelic.Agent" Version="10.35.0" />
   </ItemGroup>
 </Project>

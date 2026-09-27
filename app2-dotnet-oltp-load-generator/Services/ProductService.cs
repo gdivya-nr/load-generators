@@ -40,7 +40,7 @@ public class ProductService
             using var reader = cmd.ExecuteReader();
             if (reader.Read())
             {
-                var details = $"{reader["product_name"]} ({reader["category"]}) - ${reader.GetDouble(2):F2} [{reader["sku"]}]";
+                var details = $"{reader["product_name"]} ({reader["category"]}) - {reader["price"]} [{reader["sku"]}]";
                 _logger.LogDebug("Product details: {Details}", details);
                 return details;
             }

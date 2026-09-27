@@ -19,7 +19,6 @@ public class CustomerController : ControllerBase
     }
 
     [HttpPut("{customerId}/loyalty")]
-    [Transaction(Web = true)]
     public IActionResult UpdateLoyaltyPoints(long customerId, [FromQuery] int points)
     {
         try
@@ -39,7 +38,6 @@ public class CustomerController : ControllerBase
     }
 
     [HttpPut("{customerId}/upgrade")]
-    [Transaction(Web = true)]
     public IActionResult UpgradeCustomerType(long customerId)
     {
         try
@@ -57,7 +55,6 @@ public class CustomerController : ControllerBase
     }
 
     [HttpPost("{customerId}/access-log")]
-    [Transaction(Web = true)]
     public IActionResult LogCustomerAccess(long customerId)
     {
         try

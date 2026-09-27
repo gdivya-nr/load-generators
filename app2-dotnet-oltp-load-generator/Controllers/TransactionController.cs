@@ -24,7 +24,6 @@ public class TransactionController : ControllerBase
     }
 
     [HttpPost("process")]
-    [Transaction(Web = true)]
     public IActionResult ProcessPayment([FromQuery] long orderId)
     {
         try

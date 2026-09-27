@@ -40,6 +40,7 @@ builder.Services.AddSingleton<SessionService>();
 builder.Services.AddSingleton<OltpLoadGenerator>();
 builder.Services.AddHostedService(sp => sp.GetRequiredService<OltpLoadGenerator>());
 builder.Services.AddHttpClient();
+builder.Services.AddHttpContextAccessor();
 builder.Services.AddControllers();
 builder.Services.AddHealthChecks();
 

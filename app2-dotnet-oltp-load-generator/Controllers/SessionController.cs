@@ -19,7 +19,6 @@ public class SessionController : ControllerBase
     }
 
     [HttpPost("create")]
-    [Transaction(Web = true)]
     public IActionResult CreateSession([FromQuery] long customerId)
     {
         try
@@ -38,7 +37,6 @@ public class SessionController : ControllerBase
     }
 
     [HttpDelete("expire")]
-    [Transaction(Web = true)]
     public IActionResult ExpireSessions()
     {
         try
