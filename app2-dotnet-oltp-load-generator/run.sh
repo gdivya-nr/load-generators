@@ -36,7 +36,7 @@ else
 fi
 
 # Build if requested or if no output exists
-RELEASE_DIR="bin/Release/net8.0"
+RELEASE_DIR="bin/Release/net10.0"
 if [ "$BUILD" = true ] || [ ! -f "$RELEASE_DIR/app2-oltp-load-generator.dll" ]; then
     echo "Building..."
     dotnet build -c Release

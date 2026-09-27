@@ -31,7 +31,7 @@ if (Test-Path ".env") {
     Write-Warning ".env file not found. Copy .env.example to .env"
 }
 
-$releaseDir = "bin\Release\net8.0"
+$releaseDir = "bin\Release\net10.0"
 if ($Build -or -not (Test-Path "$releaseDir\app2-oltp-load-generator.dll")) {
     Write-Host "Building..."
     dotnet build -c Release

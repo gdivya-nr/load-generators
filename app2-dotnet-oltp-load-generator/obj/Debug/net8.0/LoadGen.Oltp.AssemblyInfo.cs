@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("app2-oltp-load-generator")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e22f09bc6d49dfaa278035847c9c8ed563c4e724")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+27054faa8b1d6793eefe7c05fbcc2414dfe079e6")]
 [assembly: System.Reflection.AssemblyProductAttribute("app2-oltp-load-generator")]
 [assembly: System.Reflection.AssemblyTitleAttribute("app2-oltp-load-generator")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
