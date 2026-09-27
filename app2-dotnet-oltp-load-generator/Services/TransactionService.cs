@@ -7,7 +7,6 @@ public class TransactionService
 {
     private readonly DatabaseManager _db;
     private readonly ILogger<TransactionService> _logger;
-    private readonly Random _random = new();
 
     private static readonly string[] Gateways = { "Stripe", "PayPal", "Square", "Authorize.Net", "Braintree" };
 
@@ -27,7 +26,7 @@ public class TransactionService
                            "(SELECT total_amount FROM oltp.ORDERS WHERE order_id = @orderId2), 'USD')";
         using var conn = _db.GetConnection();
         using var cmd = new SqlCommand(sql, conn);
-        string gateway = Gateways[_random.Next(Gateways.Length)];
+        string gateway = Gateways[Random.Shared.Next(Gateways.Length)];
         string gatewayTxnId = Guid.NewGuid().ToString();
         cmd.Parameters.AddWithValue("@orderId", orderId);
         cmd.Parameters.AddWithValue("@txnType", transactionType);
@@ -43,7 +42,7 @@ public class TransactionService
     [Trace]
     public bool ProcessPayment(long orderId)
     {
-        bool success = _random.Next(100) < 95;
+        bool success = Random.Shared.Next(100) < 95;
         const string sql = "UPDATE oltp.TRANSACTIONS SET status = @status, processed_at = CURRENT_TIMESTAMP, error_message = @errorMsg " +
                            "WHERE order_id = @orderId AND status = 'PENDING'";
         try

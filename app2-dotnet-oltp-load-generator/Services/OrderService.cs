@@ -7,7 +7,6 @@ public class OrderService
 {
     private readonly DatabaseManager _db;
     private readonly ILogger<OrderService> _logger;
-    private readonly Random _random = new();
 
     private static readonly string[] PaymentMethods = { "CREDIT_CARD", "DEBIT_CARD", "PAYPAL", "BANK_TRANSFER" };
 
@@ -26,7 +25,7 @@ public class OrderService
         using var conn = _db.GetConnection();
         using var cmd = new SqlCommand(sql, conn);
         cmd.Parameters.AddWithValue("@customerId", customerId);
-        cmd.Parameters.AddWithValue("@paymentMethod", PaymentMethods[_random.Next(PaymentMethods.Length)]);
+        cmd.Parameters.AddWithValue("@paymentMethod", PaymentMethods[Random.Shared.Next(PaymentMethods.Length)]);
         var result = cmd.ExecuteScalar() ?? throw new InvalidOperationException("Failed to create order — no ID returned");
         long orderId = Convert.ToInt64(result);
         _logger.LogDebug("Created order {OrderId} for customer {CustomerId}", orderId, customerId);

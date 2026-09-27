@@ -7,7 +7,6 @@ public class ProductService
 {
     private readonly DatabaseManager _db;
     private readonly ILogger<ProductService> _logger;
-    private readonly Random _random = new();
 
     public ProductService(DatabaseManager db, ILogger<ProductService> logger)
     {
@@ -21,7 +20,7 @@ public class ProductService
         const string sql = "UPDATE oltp.PRODUCTS SET price = price * (1 + (@priceChange / 100.0)) WHERE product_id = @productId";
         using var conn = _db.GetConnection();
         using var cmd = new SqlCommand(sql, conn);
-        double priceChange = (_random.NextDouble() * 10) - 5; // -5% to +5%
+        double priceChange = (Random.Shared.NextDouble() * 10) - 5; // -5% to +5%
         cmd.Parameters.AddWithValue("@priceChange", priceChange);
         cmd.Parameters.AddWithValue("@productId", productId);
         int updated = cmd.ExecuteNonQuery();
@@ -57,7 +56,7 @@ public class ProductService
     [Trace]
     public void SearchByCategory()
     {
-        string category = $"Category{_random.Next(10)}";
+        string category = $"Category{Random.Shared.Next(10)}";
         const string sql = "SELECT TOP 20 product_id, product_name, price FROM oltp.PRODUCTS WHERE category = @category AND is_active = 1 ORDER BY price DESC";
         try
         {

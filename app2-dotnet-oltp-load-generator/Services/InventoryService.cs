@@ -7,7 +7,6 @@ public class InventoryService
 {
     private readonly DatabaseManager _db;
     private readonly ILogger<InventoryService> _logger;
-    private readonly Random _random = new();
 
     private static readonly string[] Warehouses = { "WH-0", "WH-1", "WH-2", "WH-3", "WH-4" };
 
@@ -56,7 +55,7 @@ public class InventoryService
     [Trace]
     public void UpdateWarehouseLocation(long productId)
     {
-        string newLocation = Warehouses[_random.Next(Warehouses.Length)];
+        string newLocation = Warehouses[Random.Shared.Next(Warehouses.Length)];
         const string sql = "UPDATE oltp.INVENTORY SET warehouse_location = @location, updated_at = CURRENT_TIMESTAMP WHERE product_id = @productId";
         using var conn = _db.GetConnection();
         using var cmd = new SqlCommand(sql, conn);
@@ -144,18 +143,18 @@ public class InventoryService
 
     private void BulkUpdateInventoryWithRetry(int maxRetries)
     {
-        int updateCount = _random.Next(20) + 10; // 10–30 products
+        int updateCount = Random.Shared.Next(20) + 10; // 10–30 products
 
         // CRITICAL: Sort product IDs ascending to prevent deadlocks (matches Java lock ordering)
         var productIds = Enumerable.Range(0, updateCount)
-            .Select(_ => (long)(_random.Next(500) + 1))
+            .Select(_ => (long)(Random.Shared.Next(500) + 1))
             .Distinct()
             .OrderBy(id => id)
             .ToList();
 
         var adjustments = productIds.ToDictionary(
             id => id,
-            _ => _random.Next(100) - 50); // -50 to +50
+            _ => Random.Shared.Next(100) - 50); // -50 to +50
 
         const string sql = "UPDATE oltp.INVENTORY SET quantity_available = quantity_available + @adj, " +
                            "updated_at = CURRENT_TIMESTAMP WHERE product_id = @productId";

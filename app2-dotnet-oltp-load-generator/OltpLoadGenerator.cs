@@ -120,7 +120,7 @@ public class OltpLoadGenerator : IHostedService
     {
         long customerId = _random.Next(1000) + 1;
         int numItems = _random.Next(5) + 1;
-        using var client = _httpClientFactory.CreateClient();
+        var client = _httpClientFactory.CreateClient();
         await client.PostAsync($"{_apiBaseUrl}/api/orders/create?customerId={customerId}&numItems={numItems}", null);
     }
 
@@ -129,7 +129,7 @@ public class OltpLoadGenerator : IHostedService
     {
         long customerId = _random.Next(1000) + 1;
         int points = _random.Next(100);
-        using var client = _httpClientFactory.CreateClient();
+        var client = _httpClientFactory.CreateClient();
         await client.PutAsync($"{_apiBaseUrl}/api/customers/{customerId}/loyalty?points={points}", null);
     }
 
@@ -137,7 +137,7 @@ public class OltpLoadGenerator : IHostedService
     private async Task InventoryCheckWorkflow()
     {
         long productId = _random.Next(500) + 1;
-        using var client = _httpClientFactory.CreateClient();
+        var client = _httpClientFactory.CreateClient();
         await client.GetAsync($"{_apiBaseUrl}/api/inventory/{productId}/check");
     }
 
@@ -145,7 +145,7 @@ public class OltpLoadGenerator : IHostedService
     private async Task ProcessTransactionWorkflow()
     {
         long orderId = _random.Next(1000) + 1;
-        using var client = _httpClientFactory.CreateClient();
+        var client = _httpClientFactory.CreateClient();
         await client.PostAsync($"{_apiBaseUrl}/api/transactions/process?orderId={orderId}", null);
     }
 
@@ -153,14 +153,14 @@ public class OltpLoadGenerator : IHostedService
     private async Task SessionManagementWorkflow()
     {
         long customerId = _random.Next(1000) + 1;
-        using var client = _httpClientFactory.CreateClient();
+        var client = _httpClientFactory.CreateClient();
         await client.PostAsync($"{_apiBaseUrl}/api/sessions/create?customerId={customerId}", null);
     }
 
     [Transaction]
     private async Task DeleteOldDataWorkflow()
     {
-        using var client = _httpClientFactory.CreateClient();
+        var client = _httpClientFactory.CreateClient();
         await client.DeleteAsync($"{_apiBaseUrl}/api/orders/old?daysToKeep=30");
     }
 
@@ -168,7 +168,7 @@ public class OltpLoadGenerator : IHostedService
     private async Task BulkInsertWorkflow()
     {
         int batchSize = _random.Next(2) + 2; // 2–3
-        using var client = _httpClientFactory.CreateClient();
+        var client = _httpClientFactory.CreateClient();
         await client.PostAsync($"{_apiBaseUrl}/api/orders/bulk?batchSize={batchSize}", null);
     }
 
@@ -176,7 +176,7 @@ public class OltpLoadGenerator : IHostedService
     private async Task ProductOperationsWorkflow()
     {
         long productId = _random.Next(500) + 1;
-        using var client = _httpClientFactory.CreateClient();
+        var client = _httpClientFactory.CreateClient();
         await client.GetAsync($"{_apiBaseUrl}/api/products/{productId}");
     }
 
